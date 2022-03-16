@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- <li class="circle {{status}}" v-for="date in 10" v-bind:id="'c-'+date">
+                {{date}}
+            </li> -->
+
+            <li class="circle" v-bind:class="{ happy : isHappy, unhappy : isUnhappy }" v-for="date in 10" v-bind:id="'c-'+date">
+                {{date}}
+                <!-- <input type="text" v-model="happy"> -->
+                <p v-if="isHappy">
+                    기쁨
+                </p>
+                <p v-else-if="isUnhappy">
+                    슬픔
+                </p>
+                <p v-else>
+                </p>
+            </li>
+        </ul>
+        <div class="btn-wrap">
+            <button type="button" v-on:click="setHappy">기쁨</button>
+            <button type="button" v-on:click="setUnHappy">우울</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                // 클릭된 circle의 id값을 가져와 button value 값 입력
+                status: 'default',
+                isHappy: false,
+                isUnhappy: false,
+            },
+            methods: {
+                setHappy() {
+                    this.isHappy = !this.isHappy;
+                    this.isUnhappy = false;
+                },
+                setUnHappy() {
+                    this.isHappy = false;
+                    this.isUnhappy = !this.isUnhappy;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
